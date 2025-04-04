@@ -66,7 +66,6 @@ curl -X POST "https://8015b5dbc0724d38882ac90397c27649.weavy.io/api/users" \
 ## Troubleshooting
 - **404 Error**: Ensure the `REACT_APP_WEAVY_URL` matches your Weavy environment URL.
 - **SSL Issues**: If running locally on Windows, use `--ssl-no-revoke` with `curl` for testing. Browser SSL issues may require Weavy support.
-- **CORS**: The API may block `localhost`. Use a proxy or backend for production.
 
 ## License
 This project is licensed under the MIT License.
