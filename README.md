@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Weavy API Demo 🥬💖🧦🏆
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple React application that integrates with the [Weavy API](https://www.weavy.com/) to manage users. It currently supports creating a user via the Weavy Web API, with plans to expand to listing, updating, and deleting users.
 
-## Available Scripts
+## Features
+- **Create User**: Add a new user to the Weavy environment using the `POST /api/users` endpoint.
+- Environment variables for secure configuration (API URL and key stored in `.env`).
 
-In the project directory, you can run:
+## Prerequisites
+- [Node.js](https://nodejs.org/) (v14 or later recommended)
+- A Weavy account and environment (sign up at [weavy.com](https://www.weavy.com/))
+- A Weavy API key and environment URL
 
-### `npm start`
+## Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/ShenanVindinu/weavy-api.git
+cd weavy-demo
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-### `npm test`
+### 3. Configure Environment Variables
+Create a `.env` file in the root directory and add your Weavy environment details:
+```
+REACT_APP_WEAVY_URL=https://your-environment.weavy.io
+REACT_APP_API_KEY=your-api-key
+```
+- Replace `https://your-environment.weavy.io` with your Weavy environment URL.
+- Replace `your-api-key` with your Weavy API key.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. Run the App
+```bash
+npm start
+```
+The app will start at `http://localhost:3000`.
 
-### `npm run build`
+## Usage
+1. Open the app in your browser.
+2. Fill out the "Create User" form with:
+   - **UID**: A unique identifier for the user (e.g., `testuser1`).
+   - **Name**: The user’s name (e.g., `Test User`).
+   - **Email**: The user’s email (e.g., `test@example.com`).
+3. Click "Create" to send the request to the Weavy API.
+4. Check the browser console for detailed logs (URL, payload, response, or errors).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API Integration
+The app uses the Weavy Web API’s `POST /api/users` endpoint to create users. Example request:
+```bash
+curl -X POST "https://8015b5dbc0724d38882ac90397c27649.weavy.io/api/users" \
+-H "Authorization: Bearer wys_hMWpXdekxcn9Gc8Ioah3azOllzUZ7l3HN9yB" \
+-H "Content-Type: application/json" \
+-d '{"uid": "testuser1", "name": "Test User", "email": "test@example.com"}' \
+--ssl-no-revoke
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Current Implementation
+- **Frontend**: React with `axios` for API calls.
+- **Endpoint**: `POST /api/users` to create a user.
+- **Error Handling**: Logs errors to the console and shows alerts for success/failure.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Troubleshooting
+- **404 Error**: Ensure the `REACT_APP_WEAVY_URL` matches your Weavy environment URL.
+- **SSL Issues**: If running locally on Windows, use `--ssl-no-revoke` with `curl` for testing. Browser SSL issues may require Weavy support.
+- **CORS**: The API may block `localhost`. Use a proxy or backend for production.
 
-### `npm run eject`
+## License
+This project is licensed under the MIT License.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
